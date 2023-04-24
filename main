@@ -1,0 +1,23 @@
+public class Main {
+    public static void main(String[] args) {
+        MyPlanner planner = new MyPlanner();
+
+        planner.signUp("Ninette", "pswd1");
+        planner.signUp("Chaima", "pswd2");
+
+        boolean result = planner.signIn("Ninette", "pswd1");
+        System.out.println("Connexion avec des informations valides : " + result); // Résultat attendu : true
+
+        result = planner.signIn("Ninette", "lol");
+        System.out.println("Connexion avec un mauvais pswd : " + result); // Résultat attendu : false
+
+        result = planner.signIn("Zack", "pswd1");
+        System.out.println("Connexion avec un mauvais pseudo : " + result); // Résultat attendu : false
+
+        result = planner.signUp("Chaima", "pswd3");
+        System.out.println("Inscription avec un pseudo déjà existant : " + result); // Résultat attendu : false
+
+        result = planner.signUp("Zack", "pswd4");
+        System.out.println("Inscription avec un nouveau pseudo : " + result); // Résultat attendu : true
+    }
+}
