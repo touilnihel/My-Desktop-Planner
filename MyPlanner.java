@@ -8,6 +8,24 @@ class MyPlanner {
     public MyPlanner() {
         this.utilisateurs = new HashMap<Utilisateur, String>();
     }
+    
+     public boolean signIn(String pseudo, String motDePasse) {
+        Utilisateur utilisateur = Utilisateurs.get(pseudo);
+        if (utilisateur != null) {
+            return utilisateur.authenfication(motDePasse);
+        }
+        return false;
+    }
+
+    public boolean signUp(String pseudo, String motDePasse) {
+        if (!Utilisateurs.containsKey(pseudo)) {
+            Utilisateur utilisateur = new Utilisateur(pseudo, motDePasse);
+            Utilisateurs.put(pseudo, utilisateur);
+            return true;
+        }
+        return false;
+    }
+}
 
     // write an authentification method
     public boolean authentification(String pseudo, String motDePasse) {
