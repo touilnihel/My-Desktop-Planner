@@ -14,6 +14,15 @@ public Utilisateur(String pseudo, String motDePasse) {
 public String getPseudo() {
   
   return this.pseudo;
+} 
+ public boolean authenfication(String motDePasse) {
+   
+    String motDePasseHash = hash(motDePasse);
+    return this.motDePasse.equals(motDePasseHash);
+ }
+
+ private String hash(String motDePasse) {
+     return Integer.toString(motDePasse.hashCode());
 }
 
 public void setEstConnecte(boolean b) {
